@@ -1,0 +1,1205 @@
+[
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "character",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "weapon",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint32",
+				"name": "target",
+				"type": "uint32"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint24",
+				"name": "playerRoll",
+				"type": "uint24"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint24",
+				"name": "enemyRoll",
+				"type": "uint24"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint16",
+				"name": "xpGain",
+				"type": "uint16"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "xBladeGain",
+				"type": "uint256"
+			}
+		],
+		"name": "FightOutcome",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "xBladeAmount",
+				"type": "uint256"
+			}
+		],
+		"name": "InGameOnlyFundsGiven",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "minter",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint32",
+				"name": "count",
+				"type": "uint32"
+			}
+		],
+		"name": "MintWeaponsFailure",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "minter",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint32",
+				"name": "count",
+				"type": "uint32"
+			}
+		],
+		"name": "MintWeaponsSuccess",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			}
+		],
+		"name": "Paused",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			},
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "previousAdminRole",
+				"type": "bytes32"
+			},
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "newAdminRole",
+				"type": "bytes32"
+			}
+		],
+		"name": "RoleAdminChanged",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "sender",
+				"type": "address"
+			}
+		],
+		"name": "RoleGranted",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "sender",
+				"type": "address"
+			}
+		],
+		"name": "RoleRevoked",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			}
+		],
+		"name": "Unpaused",
+		"type": "event"
+	},
+	{ "stateMutability": "payable", "type": "fallback" },
+	{
+		"inputs": [],
+		"name": "BUSDAddress",
+		"outputs": [
+			{ "internalType": "address", "name": "", "type": "address" }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "DEFAULT_ADMIN_ROLE",
+		"outputs": [
+			{ "internalType": "bytes32", "name": "", "type": "bytes32" }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "GAME_ADMIN",
+		"outputs": [
+			{ "internalType": "bytes32", "name": "", "type": "bytes32" }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "REWARDS_CLAIM_TAX_DURATION",
+		"outputs": [
+			{ "internalType": "uint256", "name": "", "type": "uint256" }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "REWARDS_CLAIM_TAX_MAX",
+		"outputs": [{ "internalType": "int128", "name": "", "type": "int128" }],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "weaponID",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "playerAddress",
+				"type": "address"
+			}
+		],
+		"name": "approveContractWeaponFor",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "blacksmith",
+		"outputs": [
+			{
+				"internalType": "contract Blacksmith",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{ "internalType": "uint256", "name": "burnID", "type": "uint256" }
+		],
+		"name": "burnWeapon",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "burnWeaponFee",
+		"outputs": [{ "internalType": "int128", "name": "", "type": "int128" }],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256[]",
+				"name": "burnIDs",
+				"type": "uint256[]"
+			}
+		],
+		"name": "burnWeapons",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "characters",
+		"outputs": [
+			{
+				"internalType": "contract Characters",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "claimTokenRewards",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "claimXpRewards",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{ "internalType": "uint256", "name": "char", "type": "uint256" },
+			{ "internalType": "uint256", "name": "wep", "type": "uint256" },
+			{ "internalType": "uint32", "name": "target", "type": "uint32" },
+			{
+				"internalType": "uint8",
+				"name": "fightMultiplier",
+				"type": "uint8"
+			}
+		],
+		"name": "fight",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "fightRewardBaseline",
+		"outputs": [{ "internalType": "int128", "name": "", "type": "int128" }],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "fightTraitBonus",
+		"outputs": [{ "internalType": "int128", "name": "", "type": "int128" }],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "fightXpGain",
+		"outputs": [
+			{ "internalType": "uint256", "name": "", "type": "uint256" }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{ "internalType": "uint256", "name": "char", "type": "uint256" }
+		],
+		"name": "getHeroExpectedLevel",
+		"outputs": [
+			{ "internalType": "uint256", "name": "", "type": "uint256" }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getMintPrice",
+		"outputs": [
+			{ "internalType": "uint256", "name": "", "type": "uint256" }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{ "internalType": "uint32", "name": "target", "type": "uint32" }
+		],
+		"name": "getMonsterPower",
+		"outputs": [{ "internalType": "uint24", "name": "", "type": "uint24" }],
+		"stateMutability": "pure",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getMyCharacters",
+		"outputs": [
+			{ "internalType": "uint256[]", "name": "", "type": "uint256[]" }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getMyWeapons",
+		"outputs": [
+			{ "internalType": "uint256[]", "name": "", "type": "uint256[]" }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getOwnRewardsClaimTax",
+		"outputs": [{ "internalType": "int128", "name": "", "type": "int128" }],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{ "internalType": "uint24", "name": "basePower", "type": "uint24" },
+			{
+				"internalType": "int128",
+				"name": "weaponMultiplier",
+				"type": "int128"
+			},
+			{ "internalType": "uint24", "name": "bonusPower", "type": "uint24" }
+		],
+		"name": "getPlayerPower",
+		"outputs": [{ "internalType": "uint24", "name": "", "type": "uint24" }],
+		"stateMutability": "pure",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{ "internalType": "uint24", "name": "traitsCWE", "type": "uint24" }
+		],
+		"name": "getPlayerTraitBonusAgainst",
+		"outputs": [{ "internalType": "int128", "name": "", "type": "int128" }],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "playerAddress",
+				"type": "address"
+			}
+		],
+		"name": "getRewardsClaimTaxTimerStart",
+		"outputs": [
+			{ "internalType": "uint256", "name": "", "type": "uint256" }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{ "internalType": "bytes32", "name": "role", "type": "bytes32" }
+		],
+		"name": "getRoleAdmin",
+		"outputs": [
+			{ "internalType": "bytes32", "name": "", "type": "bytes32" }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{ "internalType": "bytes32", "name": "role", "type": "bytes32" },
+			{ "internalType": "uint256", "name": "index", "type": "uint256" }
+		],
+		"name": "getRoleMember",
+		"outputs": [
+			{ "internalType": "address", "name": "", "type": "address" }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{ "internalType": "bytes32", "name": "role", "type": "bytes32" }
+		],
+		"name": "getRoleMemberCount",
+		"outputs": [
+			{ "internalType": "uint256", "name": "", "type": "uint256" }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{ "internalType": "uint256", "name": "char", "type": "uint256" },
+			{ "internalType": "uint256", "name": "wep", "type": "uint256" }
+		],
+		"name": "getTargets",
+		"outputs": [
+			{ "internalType": "uint32[4]", "name": "", "type": "uint32[4]" }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{ "internalType": "uint256", "name": "char", "type": "uint256" }
+		],
+		"name": "getTaxByHeroLevel",
+		"outputs": [
+			{ "internalType": "uint256", "name": "", "type": "uint256" }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getTokenRewards",
+		"outputs": [
+			{ "internalType": "uint256", "name": "", "type": "uint256" }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{ "internalType": "address", "name": "wallet", "type": "address" }
+		],
+		"name": "getTokenRewardsFor",
+		"outputs": [
+			{ "internalType": "uint256", "name": "", "type": "uint256" }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{ "internalType": "address", "name": "wallet", "type": "address" }
+		],
+		"name": "getTotalXBladeOwnedBy",
+		"outputs": [
+			{ "internalType": "uint256", "name": "", "type": "uint256" }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "playerAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "xBladeNeeded",
+				"type": "uint256"
+			}
+		],
+		"name": "getXBladeNeededFromUserWallet",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "xBladeNeededFromUserWallet",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_inGameOnlyFunds",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_tokenRewards",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_xBladeNeeded",
+				"type": "uint256"
+			}
+		],
+		"name": "getXBladeToSubtract",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "fromInGameOnlyFunds",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "fromTokenRewards",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "fromUserWallet",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "pure",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{ "internalType": "uint256", "name": "char", "type": "uint256" }
+		],
+		"name": "getXpRewards",
+		"outputs": [
+			{ "internalType": "uint256", "name": "", "type": "uint256" }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{ "internalType": "address", "name": "to", "type": "address" },
+			{
+				"internalType": "uint256",
+				"name": "xBladeAmount",
+				"type": "uint256"
+			}
+		],
+		"name": "giveInGameOnlyFunds",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{ "internalType": "address", "name": "to", "type": "address" },
+			{
+				"internalType": "uint256",
+				"name": "xBladeAmount",
+				"type": "uint256"
+			}
+		],
+		"name": "giveInGameOnlyFundsFromContractBalance",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{ "internalType": "bytes32", "name": "role", "type": "bytes32" },
+			{ "internalType": "address", "name": "account", "type": "address" }
+		],
+		"name": "grantRole",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{ "internalType": "bytes32", "name": "role", "type": "bytes32" },
+			{ "internalType": "address", "name": "account", "type": "address" }
+		],
+		"name": "hasRole",
+		"outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{ "internalType": "address", "name": "", "type": "address" }
+		],
+		"name": "inGameOnlyFunds",
+		"outputs": [
+			{ "internalType": "uint256", "name": "", "type": "uint256" }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "contract IERC20",
+				"name": "_xBlade",
+				"type": "address"
+			},
+			{
+				"internalType": "contract Characters",
+				"name": "_characters",
+				"type": "address"
+			},
+			{
+				"internalType": "contract Weapons",
+				"name": "_weapons",
+				"type": "address"
+			},
+			{
+				"internalType": "contract IRandoms",
+				"name": "_randoms",
+				"type": "address"
+			},
+			{
+				"internalType": "contract IPancakeRouter02",
+				"name": "_pancakeRouter",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "_busdAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "contract Blacksmith",
+				"name": "_blacksmith",
+				"type": "address"
+			},
+			{
+				"internalType": "contract Promos",
+				"name": "_promos",
+				"type": "address"
+			}
+		],
+		"name": "initialize",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{ "internalType": "uint8", "name": "attacker", "type": "uint8" },
+			{ "internalType": "uint8", "name": "defender", "type": "uint8" }
+		],
+		"name": "isTraitEffectiveAgainst",
+		"outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+		"stateMutability": "pure",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "contract IStakeFromGame",
+				"name": "_stakeFromGame",
+				"type": "address"
+			}
+		],
+		"name": "migrateTo_23b3a8b",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "minimumFightTax",
+		"outputs": [
+			{ "internalType": "uint256", "name": "", "type": "uint256" }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{ "internalType": "address", "name": "ref", "type": "address" }
+		],
+		"name": "mintCharacter",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "mintCharacterFee",
+		"outputs": [
+			{ "internalType": "uint256", "name": "", "type": "uint256" }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "oneFrac",
+		"outputs": [{ "internalType": "int128", "name": "", "type": "int128" }],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "pancakeRouter",
+		"outputs": [
+			{
+				"internalType": "contract IPancakeRouter02",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "paused",
+		"outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "playerAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "convertedAmount",
+				"type": "uint256"
+			}
+		],
+		"name": "payContractTokenOnly",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "playerAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "convertedAmount",
+				"type": "uint256"
+			}
+		],
+		"name": "payPlayerConverted",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "promos",
+		"outputs": [
+			{ "internalType": "contract Promos", "name": "", "type": "address" }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "randoms",
+		"outputs": [
+			{
+				"internalType": "contract IRandoms",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{ "internalType": "uint256", "name": "amount", "type": "uint256" }
+		],
+		"name": "recoverXBlade",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "reforgeID",
+				"type": "uint256"
+			},
+			{ "internalType": "uint256", "name": "burnID", "type": "uint256" }
+		],
+		"name": "reforgeWeapon",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "reforgeWeaponFee",
+		"outputs": [{ "internalType": "int128", "name": "", "type": "int128" }],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "reforgeID",
+				"type": "uint256"
+			},
+			{ "internalType": "uint8", "name": "amountLB", "type": "uint8" },
+			{ "internalType": "uint8", "name": "amount4B", "type": "uint8" },
+			{ "internalType": "uint8", "name": "amount5B", "type": "uint8" }
+		],
+		"name": "reforgeWeaponWithDust",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "reforgeWeaponWithDustFee",
+		"outputs": [{ "internalType": "int128", "name": "", "type": "int128" }],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{ "internalType": "bytes32", "name": "role", "type": "bytes32" },
+			{ "internalType": "address", "name": "account", "type": "address" }
+		],
+		"name": "renounceRole",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{ "internalType": "bytes32", "name": "role", "type": "bytes32" },
+			{ "internalType": "address", "name": "account", "type": "address" }
+		],
+		"name": "revokeRole",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{ "internalType": "uint256", "name": "cents", "type": "uint256" }
+		],
+		"name": "setBurnWeaponValue",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "contract CWController",
+				"name": "_controller",
+				"type": "address"
+			}
+		],
+		"name": "setCWController",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{ "internalType": "uint256", "name": "baseFee", "type": "uint256" }
+		],
+		"name": "setCharacterMintValue",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{ "internalType": "uint8", "name": "points", "type": "uint8" }
+		],
+		"name": "setDurabilityCostFight",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "tenthcents",
+				"type": "uint256"
+			}
+		],
+		"name": "setFightRewardBaselineValue",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{ "internalType": "uint256", "name": "average", "type": "uint256" }
+		],
+		"name": "setFightXpGain",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{ "internalType": "uint256", "name": "tax", "type": "uint256" }
+		],
+		"name": "setMinimumFightTax",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{ "internalType": "uint256", "name": "cents", "type": "uint256" }
+		],
+		"name": "setReforgeWeaponValue",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{ "internalType": "uint256", "name": "cents", "type": "uint256" }
+		],
+		"name": "setReforgeWeaponWithDustValue",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{ "internalType": "uint8", "name": "rate", "type": "uint8" }
+		],
+		"name": "setSupportFeeRate",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "timerBase",
+				"type": "uint256"
+			}
+		],
+		"name": "setTopupTimerBase",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "stakeFromGameImpl",
+		"outputs": [
+			{
+				"internalType": "contract IStakeFromGame",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "stakeUnclaimedRewards",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "supportFeeRate",
+		"outputs": [{ "internalType": "uint8", "name": "", "type": "uint8" }],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{ "internalType": "uint256", "name": "char", "type": "uint256" }
+		],
+		"name": "swapAndLiquify",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "totalInGameOnlyFunds",
+		"outputs": [
+			{ "internalType": "uint256", "name": "", "type": "uint256" }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{ "internalType": "uint96", "name": "playerData", "type": "uint96" }
+		],
+		"name": "unpackFightData",
+		"outputs": [
+			{ "internalType": "uint8", "name": "charTrait", "type": "uint8" },
+			{
+				"internalType": "uint24",
+				"name": "basePowerLevel",
+				"type": "uint24"
+			},
+			{ "internalType": "uint64", "name": "timestamp", "type": "uint64" }
+		],
+		"stateMutability": "pure",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{ "internalType": "int128", "name": "usdAmount", "type": "int128" }
+		],
+		"name": "usdToxBlade",
+		"outputs": [
+			{ "internalType": "uint256", "name": "", "type": "uint256" }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint24",
+				"name": "playerBasePower",
+				"type": "uint24"
+			},
+			{
+				"internalType": "int128",
+				"name": "wepMultiplier",
+				"type": "int128"
+			},
+			{
+				"internalType": "uint24",
+				"name": "wepBonusPower",
+				"type": "uint24"
+			},
+			{
+				"internalType": "uint64",
+				"name": "staminaTimestamp",
+				"type": "uint64"
+			},
+			{ "internalType": "uint256", "name": "hour", "type": "uint256" },
+			{ "internalType": "uint32", "name": "target", "type": "uint32" }
+		],
+		"name": "verifyFight",
+		"outputs": [],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "weapons",
+		"outputs": [
+			{
+				"internalType": "contract Weapons",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "tokenAddress",
+				"type": "address"
+			}
+		],
+		"name": "withdrawErc20",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "xBlade",
+		"outputs": [
+			{ "internalType": "contract IERC20", "name": "", "type": "address" }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{ "stateMutability": "payable", "type": "receive" }
+]
